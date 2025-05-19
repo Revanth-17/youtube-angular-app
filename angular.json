@@ -13,9 +13,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-app",
+            "outputPath": "dist/youtube-angular-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/youtube-angular-app/",
             "polyfills": [
               "zone.js"
             ],
@@ -89,6 +90,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
