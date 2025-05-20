@@ -59,7 +59,7 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchVideos();
-    debugger
+    // debugger
   }
 
   fetchVideos(): void {
@@ -67,7 +67,7 @@ export class DashboardPageComponent implements OnInit {
       next: (data: Video[]) => this.videos = data,
       error: (err: any) => console.error('Error fetching videos:', err)
     });
-    debugger
+    // debugger
   }
 
   onFileSelected(event: any): void {
@@ -92,7 +92,7 @@ export class DashboardPageComponent implements OnInit {
             setTimeout(() => {
               this.fetchVideos();
               alert('New videos fetched successfully');
-            }, 3000); 
+            }, 5000); 
             this.uploadProgress = 0;
             this.selectedFile = null;
             this.title = '';
