@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 import { VideoDetailComponent } from '../video-detail/video-detail.component';
 import { CommentsComponent } from '../comments/comments.component';
@@ -39,6 +40,8 @@ import { Video } from '../models/video.model';
     NotesComponent,
     ActivityLogComponent,
     ThemeToggleComponent,
+    MatListModule,
+    MatIconModule
   ],
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.css']
@@ -56,6 +59,7 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchVideos();
+    debugger
   }
 
   fetchVideos(): void {
@@ -63,6 +67,7 @@ export class DashboardPageComponent implements OnInit {
       next: (data: Video[]) => this.videos = data,
       error: (err: any) => console.error('Error fetching videos:', err)
     });
+    debugger
   }
 
   onFileSelected(event: any): void {

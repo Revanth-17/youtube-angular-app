@@ -25,15 +25,31 @@
 </div>
 
 <hr />
+<div *ngIf="videos && videos.length > 0; else loading"></div>
+<div class="video-container" *ngFor="let video of videos">
+  <!-- Thumbnail -->
+  <img class="thumbnail" [src]="video.snippet.thumbnails?.['default']?.url" alt="{{ video.snippet.title }}" />
 
-<div class="video-list">
-  <h3>Uploaded Videos</h3>
-  <ul>
-  <li *ngFor="let video of videos">
-    <a [routerLink]="['/videos', video.id, 'notes']">
-      <strong>{{ video?.snippet?.localized?.title }}</strong>
-    </a>
-    — {{ video?.snippet?.localized?.description }}
-  </li>
-</ul>
+  <!-- Video Info -->
+  <div class="video-info">
+    <!-- Title -->
+    <h3 class="video-title">
+      <a [routerLink]="['/videos', video.id, 'notes']">{{ video.snippet.title }}</a>
+    </h3>
+
+    <!-- Description -->
+    <p class="video-description">{{ video.snippet.description }}</p>
+
+    <!-- Stats -->
+    <div class="video-stats">
+      <span><mat-icon>visibility</mat-icon> {{ video.statistics.viewCount }}</span>
+      <span><mat-icon>thumb_up</mat-icon> {{ video.statistics.likeCount }}</span>
+      <span><mat-icon>thumb_down</mat-icon> {{ video.statistics.dislikeCount }}</span>
+      <span><mat-icon>access_time</mat-icon> {{ video.contentDetails.duration }}</span>
+    </div>
+  </div>
 </div>
+
+<ng-template #loading>
+  <p>Loading videos...</p>
+</ng-template>
